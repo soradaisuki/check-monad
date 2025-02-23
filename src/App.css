@@ -1,38 +1,128 @@
+/* Cấu trúc trang */
+body {
+  background-color: #e1bee7; /* Nền tím nhạt */
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Container chính với nền màu tím đậm */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #7b1fa2; /* Nền tím đậm */
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Phần ứng dụng chính */
 .App {
   text-align: center;
+  background: white; /* Màu nền trắng cho ứng dụng */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Đảm bảo giao diện nổi bật trên nền */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Hiệu ứng con ếch */
+.frog {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: url('/public/Frog_icon.svg') no-repeat center;
+  background-size: contain;
+  filter: hue-rotate(240deg); /* Tô màu tím đậm cho con ếch */
+  animation: bounceFrog 5s infinite linear; /* Hiệu ứng nhảy */
+  pointer-events: none; /* Đảm bảo không cản trở thao tác người dùng */
+  z-index: 0; /* Đảm bảo con ếch nằm dưới giao diện */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@keyframes bounceFrog {
+  0% { top: 10px; left: 10px; }
+  20% { top: 20%; left: 80%; }
+  40% { top: 80%; left: 90%; }
+  60% { top: 90%; left: 10%; }
+  80% { top: 30%; left: 20%; }
+  100% { top: 10px; left: 10px; }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Nút kiểm tra nổi bật */
+button {
+  background: linear-gradient(45deg, #9c27b0, #7b1fa2); /* Màu tím cho nút */
   color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background: linear-gradient(45deg, #ab47bc, #8e24aa);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:disabled {
+  background: #b39ddb;
+  cursor: not-allowed;
+}
+
+/* Định dạng cho các thông báo lỗi */
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Cấu trúc danh sách thông tin ví */
+.wallet-info {
+  margin-top: 20px;
+  background: #f3e5f5;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.details-box {
+  background: white;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Cải thiện khả năng hiển thị của các chi tiết */
+button.details-toggle {
+  background: none;
+  color: #7b1fa2;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+button.details-toggle:hover {
+  color: #ab47bc;
+}
+
+/* Kiểu cho các ô nhập liệu */
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
 }
